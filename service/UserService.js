@@ -52,7 +52,7 @@ const UserService = {
                     rejectUnauthorized: false
                 }
             })
-            client.get( cnst.jobURL, ( data ) => {
+            client.get( cnst.jobListURL, ( data ) => {
                 let jobdata = data.filter( job => {
                     let dataDescription = job.description.toLowerCase()
                     let dataLocation = job.location.toLowerCase()
@@ -88,7 +88,28 @@ const UserService = {
                 response.status( 200 ).json( result )
             })
         })
-    }
+    },
+
+    getJobDetail: function ( request, response ) { 
+        let token = request.headers.authorization
+        JWT.verify( token, cnst.secretKey, ( error, decoded ) => { 
+            if( error ) { 
+                response.status( 401 ).json( { error: error } )
+                return
+            }
+
+            let id = request.query.id
+            let client = new RESTClient( {
+                connection: {
+                    rejectUnauthorized: false
+                }
+            })
+            client.get( cnst.jobByIDURL+id, ( data ) => {
+                response.status( 200 ).json( data )
+            })
+        })
+    },
+
 }
 
 module.exports = UserService

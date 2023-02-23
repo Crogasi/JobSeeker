@@ -15,7 +15,7 @@
     constants.serverURL = process.env.URL || "localhost"
 
     constants.secretKey = "secretKey"
-    constants.jobURL= "http://dev3.dansmultipro.co.id/api/recruitment/positions.json"
-
+    constants.jobListURL= "http://dev3.dansmultipro.co.id/api/recruitment/positions.json"
+    constants.jobByIDURL= "http://dev3.dansmultipro.co.id/api/recruitment/positions/"
     module.exports = constants
 })((this || 0).self || global);

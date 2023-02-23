@@ -23,7 +23,7 @@ let DBServices = {
                 resolve( results.rows )
             } )
         } )
-    }
+    } 
 }
 
 module.exports = DBServices

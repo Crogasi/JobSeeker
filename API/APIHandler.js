@@ -18,8 +18,12 @@ const APIHandler = {
             UserService.login( request, response )
         } )
 
-        router.get( '/job', ( request, response ) => {
+        router.get( '/job/list', ( request, response ) => {
             UserService.getJob( request, response )
+        } ) 
+        
+        router.get( '/job/detail', ( request, response ) => { 
+            UserService.getJobDetail( request, response )
         } )
 
         app.use( '/', router )
